@@ -17,13 +17,20 @@ public class Fichajes implements IFichajes {
 
     @Override
     public Boolean login(String user, String pass) {
-
-        return null;
+        if(user.equals("admin") && pass.equals("1234")){
+            return true;
+        }
+        return false;
     }
 
     @Override
     public String alta_alumno(String dni, String nombre) {
-        return "";
+        Alumno alumno = new Alumno(dni, nombre);
+        if (listaAlumnos.contains(alumno)) {
+            return "El alumno ya existe con ese DNI";
+        }
+        listaAlumnos.add(alumno);
+        return "Alumno añadido correctamente";
     }
 
     @Override
