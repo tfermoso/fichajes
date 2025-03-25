@@ -63,6 +63,23 @@ public class Fichajes implements IFichajes {
 
     @Override
     public String fichar(String dni) {
-        return "";
+        Alumno alumno=buscarPorDni(dni);
+        if(alumno==null){
+            return "No existe un alumno con ese DNI: "+dni;
+        }
+        Registro registro=new Registro(alumno,modo);
+        registros.add(registro);
+        return "Registro creado correctamente";
     }
+
+    private Alumno buscarPorDni(String dni) {
+        for (Alumno alumno : listaAlumnos) {
+            if(alumno.getDni().equals(dni)) {
+                return alumno;
+            }
+        }
+        return null;
+    }
+
+
 }
