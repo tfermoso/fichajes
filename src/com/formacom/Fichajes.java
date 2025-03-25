@@ -35,12 +35,19 @@ public class Fichajes implements IFichajes {
 
     @Override
     public String cambiar_modo(String modo) {
-        return "";
+        this.modo=modo;
+        return this.modo;
     }
 
     @Override
     public List<Registro> informe_por_dia(LocalDate dia) {
-        return List.of();
+        List<Registro> informe=new ArrayList<>();
+        for (Registro registro : registros) {
+           if(registro.getFecha().toLocalDate().equals(dia)){
+               informe.add(registro);
+           }
+        }
+        return informe;
     }
 
     @Override
