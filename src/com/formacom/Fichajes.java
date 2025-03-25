@@ -52,7 +52,13 @@ public class Fichajes implements IFichajes {
 
     @Override
     public List<Registro> informe_por_alumno(String dni) {
-        return List.of();
+        List<Registro> informe=new ArrayList<>();
+        for (Registro registro : registros) {
+           if(registro.getAlumno().getDni().equals(dni)){
+               informe.add(registro);
+           }
+        }
+        return informe;
     }
 
     @Override
