@@ -58,6 +58,13 @@ public class Main {
                                     System.out.println(fichajes.fichar(dni));
                                     break;
                                 case "2":
+                                    System.out.println("Password Administrador:");
+                                    String pass=leer.nextLine();
+                                    if(fichajes.login("admin",pass)){
+                                        System.out.println("Saliendo....");
+                                    }else{
+                                        opcionSeleccionada="dddd";
+                                    }
                                     break;
                                 default:
                                     System.out.println("Opción no válida");
