@@ -44,7 +44,24 @@ public class Main {
                     }else{
                         System.out.println(fichajes.cambiar_modo("Salida"));
                     }
+                    System.out.println("Activar modo alumn@ s/n");
+                    opcionSeleccionada=leer.nextLine();
+                    if(opcionSeleccionada.equals("s")){
+                        //Activamos modo alumno
+                        do {
+                            System.out.println(MENU_ALUMNO);
+                            opcionSeleccionada=leer.nextLine();
+                            switch (opcionSeleccionada){
+                                case "1":
+                                    break;
+                                case "2":
+                                    break;
+                                default:
+                                    System.out.println("Opción no válida");
+                            }
 
+                        }while(!opcionSeleccionada.equals("2"));
+                    }
                     break;
                 case "3":
 
