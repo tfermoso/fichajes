@@ -1,6 +1,8 @@
 import com.formacom.Fichajes;
 import com.formacom.Registro;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -46,7 +48,10 @@ public class Main {
                     opcionSeleccionada=leer.nextLine();
                     switch (opcionSeleccionada){
                         case "1":
-
+                            System.out.println("Fecha Informe dd/MM/yyyy");
+                            String fecha_informe=leer.nextLine();
+                            LocalDate localDate=LocalDate.parse(fecha_informe, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                            mostrarRegistros(fichajes.informe_por_dia(localDate));
                         break;
                         case "2":
                             System.out.println("DNI Alumn@:");
