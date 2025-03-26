@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner leer=new Scanner(System.in);
+        Fichajes fichajes=new Fichajes();
         String opcionSeleccionada="";
         final String MENU_ADMINISTRADOR= """
                 1. Nuevo Alumno
@@ -26,12 +27,31 @@ public class Main {
             opcionSeleccionada=leer.nextLine();
             switch (opcionSeleccionada){
                 case "1":
+                    System.out.println("Nombre del alumn@:");
+                    String nombre=leer.nextLine();
+                    System.out.println("DNI del alumn@:");
+                    String dni=leer.nextLine();
+                    System.out.println(fichajes.alta_alumno(dni,nombre));
                     break;
                 case "2":
+                    System.out.println("""
+                              1.Modo Entrada
+                              2.Modo Salida
+                            """);
+                    opcionSeleccionada=leer.nextLine();
+                    if(opcionSeleccionada.equals("1")){
+                        System.out.println(fichajes.cambiar_modo("Entrada"));
+                    }else{
+                        System.out.println(fichajes.cambiar_modo("Salida"));
+                    }
+
                     break;
                 case "3":
+
                 break;
                 case "4":
+
+                    System.out.println("Hasta la próxima");
                     break;
                 default:
                     System.out.println("Opción no válida");
