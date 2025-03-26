@@ -53,6 +53,9 @@ public class Main {
                             opcionSeleccionada=leer.nextLine();
                             switch (opcionSeleccionada){
                                 case "1":
+                                    System.out.println("Introduce DNI: ");
+                                    dni=leer.nextLine();
+                                    System.out.println(fichajes.fichar(dni));
                                     break;
                                 case "2":
                                     break;
