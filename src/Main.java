@@ -1,5 +1,7 @@
 import com.formacom.Fichajes;
+import com.formacom.Registro;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -40,7 +42,23 @@ public class Main {
 
                     break;
                 case "3":
+                    System.out.println(MENU_INFORME);
+                    opcionSeleccionada=leer.nextLine();
+                    switch (opcionSeleccionada){
+                        case "1":
 
+                        break;
+                        case "2":
+                            System.out.println("DNI Alumn@:");
+                            dni=leer.nextLine();
+                            mostrarRegistros(fichajes.informe_por_alumno(dni));
+                            break;
+                        case "3":
+                            System.out.println("Volviendo...");
+                            break;
+                        default:
+                            System.out.println("Opción no válida");
+                    }
                 break;
                 case "4":
 
@@ -52,6 +70,10 @@ public class Main {
 
         }while (! opcionSeleccionada.equals("4"));
 
+    }
+
+    private static void mostrarRegistros(List<Registro> registros) {
+        System.out.println(registros);
     }
 
 
