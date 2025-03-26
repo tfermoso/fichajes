@@ -8,8 +8,14 @@ import java.util.Scanner;
 
 public class Main {
     final static String MENU_ALUMNO= """
+____________________________________________________________             
+                FICHAJE ALUMN@S                
+                
                 1. Fichar
                 2. Salir
+                
+____________________________________________________________             
+                
                 """;
 
     public static void main(String[] args) {
@@ -17,17 +23,41 @@ public class Main {
         Fichajes fichajes=new Fichajes();
         String opcionSeleccionada="";
         final String MENU_ADMINISTRADOR= """
+____________________________________________________________                           
+                FICHAJES FORMACOM
+                
                 1. Nuevo Alumno
                 2. Seleccionar Modo
                 3. Ver Informes
                 4. Salir
+                
+                
+____________________________________________________________             
                 """;
 
         final String MENU_INFORME= """
+____________________________________________________________                           
+                MENÚ INFORMES
+                
+                
                 1. Fichajes por dia
                 2. Fichajes por alumno
                 3. Volver
+                
+____________________________________________________________             
+
                 """;
+        String usuario="";
+        String password="";
+        System.out.println("---BIENVENIDO A FICHAJES FORMACOM---");
+        do{
+            System.out.print("usuario: ");
+            usuario=leer.nextLine();
+            System.out.print("contraseña: ");
+            password=leer.nextLine();
+            if(!fichajes.login(usuario,password))
+                System.out.println("Usuario o Contraseña incorrectas");
+        }while (! fichajes.login(usuario,password));
         do {
             System.out.println(MENU_ADMINISTRADOR);
             opcionSeleccionada=leer.nextLine();
@@ -84,9 +114,15 @@ public class Main {
 
     static void funcionMenu2(String opcionSeleccionada,Scanner leer,Fichajes fichajes){
         System.out.println("""
-                              1.Modo Entrada
-                              2.Modo Salida
-                            """);
+____________________________________________________________             
+                SELECCIÓN DE MODO
+                              
+                1.Modo Entrada
+                2.Modo Salida
+                              
+____________________________________________________________             
+
+                """);
         opcionSeleccionada=leer.nextLine();
         if(opcionSeleccionada.equals("1")){
             System.out.println(fichajes.cambiar_modo("Entrada"));
