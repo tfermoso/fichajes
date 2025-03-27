@@ -13,6 +13,12 @@ public class Registro {
         fecha=LocalDateTime.now();
     }
 
+    public Registro(String dni,String nombre, LocalDateTime fecha, String modo) {
+        this.alumno = new Alumno(dni,nombre);
+        this.fecha = fecha;
+        this.modo = modo;
+    }
+
     public Alumno getAlumno() {
         return alumno;
     }
