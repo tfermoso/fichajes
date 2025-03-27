@@ -1,4 +1,6 @@
 import com.formacom.Fichajes;
+import com.formacom.FichajesDB;
+import com.formacom.IFichajes;
 import com.formacom.Registro;
 
 import java.time.LocalDate;
@@ -20,7 +22,7 @@ ____________________________________________________________
 
     public static void main(String[] args) {
         Scanner leer=new Scanner(System.in);
-        Fichajes fichajes=new Fichajes();
+        IFichajes fichajes=new FichajesDB();
         String opcionSeleccionada="";
         final String MENU_ADMINISTRADOR= """
 ____________________________________________________________                           
@@ -112,7 +114,7 @@ ____________________________________________________________
     }
 
 
-    static void funcionMenu2(String opcionSeleccionada,Scanner leer,Fichajes fichajes){
+    static void funcionMenu2(String opcionSeleccionada,Scanner leer,IFichajes fichajes){
         System.out.println("""
 ____________________________________________________________             
                 SELECCIÓN DE MODO
