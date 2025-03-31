@@ -52,7 +52,26 @@ public class FichajesDB implements IFichajes{
 
     @Override
     public List<Registro> informe_por_dia(LocalDate dia) {
-        return List.of();
+        List<Registro> informe=new ArrayList<>();
+        String sql="SELECT U.dni,U.nombre,R.modo,R.created_at FROM registros R inner join\n" +
+                "usuarios U on R.dni=U.dni where R.fecha=?";
+        try {
+            Connection conexion=DatabaseConnection.getConnection();
+            PreparedStatement pst = conexion.prepareStatement(sql);
+            pst.setDate(1, Date.valueOf(dia));
+            ResultSet resultSet=pst.executeQuery();
+            while (resultSet.next()){
+                String dni= resultSet.getString("dni");
+                String nombre= resultSet.getString("nombre");
+                String modo= resultSet.getString("modo");
+                LocalDateTime fecha= resultSet.getTimestamp("created_at").toLocalDateTime();
+                informe.add(new Registro(dni,nombre,fecha,modo));
+            }
+            return informe;
+        } catch (SQLException e) {
+            return informe;
+            //throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -66,14 +85,14 @@ public class FichajesDB implements IFichajes{
             pst.setString(1,dni);
             ResultSet resultSet=pst.executeQuery();
             while (resultSet.next()){
-                String dni= resultSet.getString("dni");
                 String nombre= resultSet.getString("nombre");
                 String modo= resultSet.getString("modo");
                 LocalDateTime fecha= resultSet.getTimestamp("created_at").toLocalDateTime();
                 informe.add(new Registro(dni,nombre,fecha,modo));
             }
+            return informe;
         } catch (SQLException e) {
-            return List.of();
+            return informe;
             //throw new RuntimeException(e);
         }
     }
